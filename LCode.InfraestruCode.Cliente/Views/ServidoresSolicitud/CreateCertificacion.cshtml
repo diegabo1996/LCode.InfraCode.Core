@@ -1,0 +1,72 @@
+﻿@model LCode.InfraestruCode.Core.BD.Contexto.v1_0.Modelos.ServidoresSolicitud
+
+@{
+    ViewData["Title"] = "Crear Solicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Crear Solicitud</h1>
+
+<h4>Realiza solicitudes sobre los servidores diversos servidores.</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateCertificacion">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="md-form input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text md-addon">CER</span>
+                </div>
+                <label asp-for="Servidor" class="control-label"></label>
+                <input asp-for="Servidor" class="form-control" placeholder="NNN00" />
+                <span asp-validation-for="Servidor" class="text-danger"></span>
+            </div>
+            <div class="md-form ml-auto">
+                <label asp-for="TipoSolicitud" class="mdb-main-label"></label>
+                <select asp-for="TipoSolicitud" class="mdb-select md-form">
+                    <option value="" disabled selected>-- Tipo de Solicitud --</option>
+                    <option value="0">Encender Servidor</option>
+                    <option value="1">Reiniciar Servidor</option>
+                    <option value="2">Apagar Servidor</option>
+                </select>
+                <span asp-validation-for="TipoSolicitud" class="text-danger"></span>
+            </div>
+            <div class="md-form">
+                <label asp-for="Observacion" class="control-label"></label>
+                <input asp-for="Observacion" class="form-control" />
+                <span asp-validation-for="Observacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar Solicitud" class="btn btn-primary btn-rounded" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="IndexCertificacion">Volver a mis solicitudes.</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('.mdb-select').materialSelect();
+            $('.datepicker').pickadate({
+                monthsFull: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+                monthsShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+                weekdaysFull: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+                weekdaysShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+                today: 'hoy',
+                clear: 'borrar',
+                close: 'cerrar',
+                firstDay: 1,
+                format: 'yyyy/mm/dd',
+                selectYears: 75,
+                // An integer (positive/negative) sets it relative to today.
+                max: true,
+                min: new Date(1900, 1, 1)
+            });
+        });
+    </script>
+}

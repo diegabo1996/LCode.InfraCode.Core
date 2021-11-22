@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container my-5 py-5 z-depth-1">
+    @*<h1 class="display-4">Bienvenid@@</h1>*@
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <section class="px-md-5 mx-md-5 text-center dark-grey-text">
+
+            <!--Grid row-->
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-4 mb-md-0">
+
+                    <h3 class="font-weight-bold text-primary">Inicia Sesión!</h3>
+
+                    <p class="text-muted">
+                        <i class="fas fa-file-invoice fa-2x text-warning"></i>
+                        Ingresa tus credenciales de dominio en el siguiente formulario!
+                    </p>
+                    @*<form asp-action="InicioSesion" asp-controller="Sesion">*@
+                    <div class="md-form" style="text-align: left!important;">
+                        <i class="fas fa-user prefix blue-text"></i>
+                        <input type="text" id="Usuario" class="form-control">
+                        <label for="Usuario">Nombre Usuario de Dominio</label>
+                    </div>
+                    <div class="md-form" style="text-align: left!important;">
+                        <i class="fas fa-lock prefix blue-text"></i>
+                        <input type="password" id="Contrasenia" class="form-control">
+                        <label for="Contrasenia">Contraseña</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button id="login" class="btn btn-outline-success btn-rounded waves-effect">Iniciar Sesion</button>
+                        @*<input type="submit" value="Iniciar Sesion" class="btn btn-outline-success btn-rounded waves-effect" />*@
+                    </div>
+                    @*</form>*@
+                    <!--<hr class="my-5">
+
+                    <p class="font-weight-bold">Síguenos en nuestras redes sociales:</p>-->
+                    <!--Facebook-->
+                    <!--<a href="https://www.facebook.com/medico.com.bo" class="mx-1" role="button"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/tercer-elemento" class="mx-1" role="button"><i class="fab fa-linkedin-in"></i></a>-->
+
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-md-5 mb-4 mb-md-0">
+
+                    <img src="/img/serverlogin.jpg" class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+
+        </section>
+    }
+    else
+    {
+        <h1 class="display-4">Bienvenid@@ @User.Claims.FirstOrDefault(x=>x.Type== System.Security.Claims.ClaimTypes.Name).Value</h1>
+    }
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/Sitio/Login.js"></script>
+}

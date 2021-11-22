@@ -1,0 +1,70 @@
+﻿@model LCode.InfraestruCode.Core.BD.Contexto.v1_0.Modelos.ServidoresSolicitud
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>ServidoresSolicitud</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GuidSolicitud" />
+            <div class="form-group">
+                <label asp-for="Servidor" class="control-label"></label>
+                <input asp-for="Servidor" class="form-control" />
+                <span asp-validation-for="Servidor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoSolicitud" class="control-label"></label>
+                <select asp-for="TipoSolicitud" class="form-control"></select>
+                <span asp-validation-for="TipoSolicitud" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observacion" class="control-label"></label>
+                <input asp-for="Observacion" class="form-control" />
+                <span asp-validation-for="Observacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioSolicita" class="control-label"></label>
+                <input asp-for="UsuarioSolicita" class="form-control" />
+                <span asp-validation-for="UsuarioSolicita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaHoraRegistro" class="control-label"></label>
+                <input asp-for="FechaHoraRegistro" class="form-control" />
+                <span asp-validation-for="FechaHoraRegistro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoSolicitud" class="control-label"></label>
+                <select asp-for="EstadoSolicitud" class="form-control"></select>
+                <span asp-validation-for="EstadoSolicitud" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mensaje" class="control-label"></label>
+                <input asp-for="Mensaje" class="form-control" />
+                <span asp-validation-for="Mensaje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaHoraUltimaModificacion" class="control-label"></label>
+                <input asp-for="FechaHoraUltimaModificacion" class="form-control" />
+                <span asp-validation-for="FechaHoraUltimaModificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

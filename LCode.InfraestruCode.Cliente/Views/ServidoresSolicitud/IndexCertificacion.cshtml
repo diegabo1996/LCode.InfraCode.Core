@@ -1,0 +1,95 @@
+﻿@model IEnumerable<LCode.InfraestruCode.Core.BD.Contexto.v1_0.Modelos.ServidoresSolicitud>
+
+@{
+    ViewData["Title"] = "Solicitudes Servidores - Certificacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css {
+    <link href="~/css/addons/datatables.min.css" rel="stylesheet">
+    <style>
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting:before,
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting_asc:before,
+        table.dataTable thead .sorting_asc_disabled:after,
+        table.dataTable thead .sorting_asc_disabled:before,
+        table.dataTable thead .sorting_desc:after,
+        table.dataTable thead .sorting_desc:before,
+        table.dataTable thead .sorting_desc_disabled:after,
+        table.dataTable thead .sorting_desc_disabled:before {
+            bottom: .5em;
+        }
+    </style>
+}
+<h1>Solicitudes Servidores</h1>
+
+<p>
+    <a asp-action="CreateCertificacion">Crear Nuevo</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UsuarioSolicita)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servidor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoSolicitud)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaHoraRegistro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoSolicitud)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaHoraUltimaModificacion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsuarioSolicita)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Servidor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoSolicitud)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaHoraRegistro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstadoSolicitud)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaHoraUltimaModificacion)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.GuidSolicitud">Detalles</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/js/addons/datatables.min.js"></script>
+    <script>
+            $(document).ready(function () {
+                $('.table').DataTable({
+                    "order": [[5, "desc"]]
+                });
+                $('.dataTables_length').addClass('bs-select');
+            });
+    </script>
+}
+
